@@ -1,0 +1,5 @@
+Select sum(DT.count*D.count)
+From frequency as D inner join frequency as DT on D.docid != DT.docid
+Where D.term=DT.term and D.docid = '10080_txt_crude' and DT.docid='17035_txt_earn';
+
+

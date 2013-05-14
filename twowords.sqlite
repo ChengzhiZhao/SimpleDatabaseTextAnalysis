@@ -1,0 +1,7 @@
+select *
+FROM 
+(Select * from frequency where term = "transactions") as a
+Inner join
+(Select * from frequency where term = "world") as b
+on a.docid = b.docid;
+

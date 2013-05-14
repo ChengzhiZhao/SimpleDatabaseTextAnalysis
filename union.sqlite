@@ -1,0 +1,9 @@
+Select count(*)
+From(
+SELECT f.term
+FROM frequency AS f
+WHERE f.docid = '10398_txt_earn' and f.count = 1 
+UNION 
+SELECT X.term
+FROM frequency AS X
+WHERE X.docid = '925_txt_trade'and X.count =1) AS uniontable;

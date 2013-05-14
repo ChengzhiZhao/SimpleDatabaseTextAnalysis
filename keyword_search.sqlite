@@ -1,0 +1,20 @@
+Select Table1.docid, Table2.docid,Table2.term, sum(Table1.count*Table2.count)
+From
+(SELECT * FROM frequency
+UNION
+SELECT 'q' as docid, 'washington' as term, 1 as count 
+UNION
+SELECT 'q' as docid, 'taxes' as term, 1 as count
+UNION 
+SELECT 'q' as docid, 'treasury' as term, 1 as count) AS Table1
+Inner Join
+(SELECT * FROM frequency
+UNION
+SELECT 'q' as docid, 'washington' as term, 1 as count 
+UNION
+SELECT 'q' as docid, 'taxes' as term, 1 as count
+UNION 
+SELECT 'q' as docid, 'treasury' as term, 1 as count) AS Table2
+on Table1.docid != Table2.docid
+Where Table1.term = Table2.term and Table1.docid = 'q'
+Group By Table1.docid,Table2.docid;

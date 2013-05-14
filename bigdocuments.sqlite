@@ -1,0 +1,6 @@
+SELECT count(*)
+From(
+SELECT *
+FROM frequency as f
+Group by f.docid
+Having Sum(f.count) > 300) AS T;
